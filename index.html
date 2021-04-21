@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <style>
+        .box{width:100px;height:100px;
+        border:1px solid black;
+        }
+    </style>
+
+        
+    <div style='display:flex'>
+        <div id='1' class='box'></div>
+        <div id='2' class='box'></div>
+        <div id='3' class='box'></div>       
+        <div id='4' class='box'></div> 
+    </div>
+    
+    <div style='display:flex'>
+        <div id='5' class='box'></div>
+        <div id='6' class='box'></div>
+        <div id='7' class='box'></div>       
+        <div id='8' class='box'></div> 
+    </div>
+    
+    <div style='display:flex'>
+        <div id='9' class='box'></div>
+        <div id='10' class='box'></div>
+        <div id='11' class='box'></div>       
+        <div id='12' class='box'></div> 
+    </div>
+
+    <div style='display:flex'>
+        <div id= '13' class='box'></div>
+        <div id= '14' class='box'></div>
+        <div id= '15' class='box'></div>       
+        <div id= '16' class='box'></div> 
+    </div>
+    
+    
+
+    <script>
+        
+        molePosition=0
+
+        let boxes = document.getElementsByClassName('box')
+        for(let i=0;i<boxes.length;i++){
+            boxes[i].onclick=()=>clickedCell(i)
+
+        }
+
+        
+        setInterval(popUpMole,1000)
+
+        function popUpMole(){
+
+            //Don't do this the very first time (when molePosition ==0 - becuase there is no position 0)
+            if (molePosition>0){document.getElementById(molePosition).style.backgroundColor='white'}
+
+            molePosition = Math.floor(Math.random() * 16) +1
+
+            document.getElementById(molePosition).style.backgroundColor='brown'
+
+        }
+
+        function clickedCell(i){
+
+            console.log(i)
+
+            if (i==molePosition){
+                //it's a hit
+                document.getElementById(molePosition).style.backgroundColor='red'
+
+            }   
+            else{
+                //it's a miss (we clicked the wrong cell)
+                document.getElementById(i).style.backgroundColor='blue'
+            
+            }
+
+        }
+
+
+    </script>
+
+    
+</body>
+</html>
